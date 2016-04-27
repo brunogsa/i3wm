@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 
 # A good font to use
 font pango:DejaVu Sans Mono 10
@@ -100,6 +100,9 @@ bindsym $mod+Shift+8 move container to workspace $workspaceName8
 bindsym $mod+Shift+9 move container to workspace $workspaceName9
 bindsym $mod+Shift+0 move container to workspace $workspaceName0
 
+# Enable workspace toggling
+workspace_auto_back_and_forth yes
+
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -166,5 +169,5 @@ bindsym XF86AudioPrev exec playerctl previous
 # Background image
 exec_always feh --bg-scale ~/i3wm/wallpaper.jpg
 
-# Fix for terminal transparency
-exec --no-startup-id compton
+# Add to your terminal autorun
+# tmux && exec_always compton -cCGfF -b -i 0.5 --vsync opengl
