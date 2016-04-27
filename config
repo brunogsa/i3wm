@@ -65,7 +65,7 @@ bindsym $mod+a focus parent
 # Focus the child container
 #bindsym $mod+d focus child
 
-set $workspaceName1 "1"
+set $workspaceName1 "1 - Browser"
 set $workspaceName2 "2"
 set $workspaceName3 "3"
 set $workspaceName4 "4"
@@ -74,7 +74,7 @@ set $workspaceName6 "6"
 set $workspaceName7 "7"
 set $workspaceName8 "8"
 set $workspaceName9 "9"
-set $workspaceName0 "0"
+set $workspaceName0 "0 - Media Players"
 
 # Switch to workspace
 bindsym $mod+1 workspace $workspaceName1
