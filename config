@@ -165,3 +165,6 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Background image
 exec_always feh --bg-scale ~/i3wm/wallpaper.jpg
+
+# Fix for terminal transparency
+exec --no-startup-id compton
