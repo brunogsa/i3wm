@@ -1,37 +1,29 @@
+ Set $WINDOWS_KEY as our Mod key
 set $mod Mod4
 
+# Disable title bars. Title bars are annoying, useless and cause issues with transparency
+new_window pixel
+
 # A good font to use
-font pango:DejaVu Sans Mono 10
+font pango:Courier New 13
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal -e tmux
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-
-# Change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ccedilla focus right
+# Start the application launcher
+bindsym $mod+d exec i3-dmenu-desktop
 
 # Alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# Move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ccedilla move right
 
 # Alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -49,15 +41,11 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout toggle split
 
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
 bindsym $mod+a focus parent
@@ -65,7 +53,7 @@ bindsym $mod+a focus parent
 # Focus the child container
 #bindsym $mod+d focus child
 
-set $workspaceName1 "1 - Browser"
+set $workspaceName1 "1"
 set $workspaceName2 "2"
 set $workspaceName3 "3"
 set $workspaceName4 "4"
@@ -73,7 +61,7 @@ set $workspaceName5 "5"
 set $workspaceName6 "6"
 set $workspaceName7 "7"
 set $workspaceName8 "8"
-set $workspaceName9 "9"
+set $workspaceName9 "9 - Browsers"
 set $workspaceName0 "0 - Media Players"
 
 # Switch to workspace
@@ -142,11 +130,12 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    position top
+    status_command i3status --config ~/i3wm/i3status.conf
 }
 
 # Hotkey for Locking the screen
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+l exec i3lock
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -169,5 +158,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # Background image
 exec_always feh --bg-scale ~/i3wm/wallpaper.jpg
 
-# Add to your terminal autorun
-# tmux && exec_always compton -cCGfF -b -i 0.5 --vsync opengl
+# Applets
+exec --no-startup-id volti
+exec --no-startup-id nm-applet
